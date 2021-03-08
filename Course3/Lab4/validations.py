@@ -19,6 +19,14 @@ def validate_user(username, minlen):
     if username[0].isnumeric():
         return False
     return True
+    # Username can't begin with special char's
+    if not re.match('^(?!_)$',username):
+        return False
+    return True 
 
+print(validate_user("blue.kale", 3)) # True
+print(validate_user(".blue.kale", 3)) # Currently True, should be False
+print(validate_user("red_quinoa", 4)) # True
+print(validate_user("_red_quinoa", 4)) # Currently True, should be False
 
 
